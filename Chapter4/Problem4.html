@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score Card</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Body Styling */
+      body {
+        background: #f2f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Table Styling */
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        max-width: 600px;
+        background: #ffffff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      /* Table Header */
+      thead {
+        background: linear-gradient(90deg, #1e90ff, #00bfff);
+        color: #fff;
+      }
+
+      th,
+      td {
+        padding: 15px 20px;
+        text-align: center;
+      }
+
+      /* Table Rows */
+      tbody tr:nth-child(even) {
+        background: #f0f8ff;
+      }
+
+      tbody tr:hover {
+        background: #dbeeff;
+        transition: 0.3s;
+      }
+
+      /* Borders */
+      th,
+      td {
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      /* Responsive Table */
+      @media (max-width: 500px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+          width: 100%;
+        }
+
+        thead tr {
+          display: none;
+        }
+
+        tbody tr {
+          margin-bottom: 15px;
+          display: block;
+          background: #ffffff;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          padding: 10px;
+        }
+
+        tbody td {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          border: none;
+        }
+
+        tbody td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          color: #555;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Match</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MS Dhoni</td>
+          <td>91</td>
+          <td>2011</td>
+        </tr>
+        <tr>
+          <td>Virat Kohali</td>
+          <td>100</td>
+          <td>2018</td>
+        </tr>
+        <tr>
+          <td>Rohit Sharma</td>
+          <td>64</td>
+          <td>2024</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

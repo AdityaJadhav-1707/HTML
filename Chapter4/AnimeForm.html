@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime Form</title>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffe259, #ffa751);
+        color: #222;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: background 1.5s ease-in-out, opacity 0.8s ease-in-out;
+        animation: fadeIn 1.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      div {
+        margin: 12px 0;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px 20px;
+        border-radius: 10px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: background 0.5s ease;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      input,
+      select {
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 2px solid #ffb703;
+        width: 200px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #fb8500;
+        box-shadow: 0 0 8px #fb8500;
+      }
+
+      input[value="one piece"]:checked + label {
+        color: #0077be;
+        font-weight: bold;
+        text-shadow: 0 0 6px #00bfff;
+      }
+
+      input[value="demon slayer"]:checked + label {
+        color: #b22222;
+        font-weight: bold;
+        text-shadow: 0 0 6px #ff4d4d;
+      }
+
+      input[value="naruto"]:checked + label {
+        color: #ff6600;
+        font-weight: bold;
+        text-shadow: 0 0 6px #ffb347;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1.1em;
+      }
+
+      p b {
+        color: #222;
+        font-size: 1.3em;
+      }
+
+      .fade-bg {
+        animation: fadeBackground 1s ease-in-out;
+      }
+
+      @keyframes fadeBackground {
+        0% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 0.9;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* 🎛️ Floating Music Controls */
+      .music-controls {
+        position: fixed;
+        bottom: 20px;
+        right: 25px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 12px 16px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: 0.4s;
+        z-index: 1000;
+      }
+
+      .music-controls input[type="range"] {
+        accent-color: #fb8500;
+        width: 80px;
+      }
+
+      .music-controls span {
+        font-size: 18px;
+        user-select: none;
+      }
+
+      .music-onepiece {
+        background: rgba(0, 119, 182, 0.9);
+        box-shadow: 0 0 12px #00bfff;
+      }
+
+      .music-demonslayer {
+        background: rgba(150, 0, 0, 0.9);
+        box-shadow: 0 0 12px #ff3333;
+      }
+
+      .music-naruto {
+        background: rgba(255, 102, 0, 0.9);
+        box-shadow: 0 0 12px #ffb347;
+      }
+
+      .music-controls:hover {
+        transform: scale(1.08);
+        filter: brightness(1.2);
+      }
+
+      /* 🚀 Submit Button Base */
+      .submit-btn {
+        background: linear-gradient(135deg, #ffa751, #ff7b00);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 25px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn:hover {
+        transform: scale(1.08);
+      }
+
+      /* ✨ Glowing Aura Animations */
+      @keyframes glowPulseBlue {
+        0%,
+        100% {
+          box-shadow: 0 0 10px #00bfff, 0 0 20px #0077b6;
+        }
+        50% {
+          box-shadow: 0 0 20px #00e0ff, 0 0 35px #00bfff;
+        }
+      }
+
+      @keyframes glowPulseRed {
+        0%,
+        100% {
+          box-shadow: 0 0 10px #ff4d4d, 0 0 20px #b22222;
+        }
+        50% {
+          box-shadow: 0 0 20px #ff6666, 0 0 35px #ff0000;
+        }
+      }
+
+      @keyframes glowPulseOrange {
+        0%,
+        100% {
+          box-shadow: 0 0 10px #ffb347, 0 0 20px #ff6600;
+        }
+        50% {
+          box-shadow: 0 0 20px #ffc47e, 0 0 35px #ff8800;
+        }
+      }
+
+      /* 🌊🔥🍃 Theme Variants */
+      .btn-onepiece {
+        background: linear-gradient(135deg, #00b4d8, #0077b6);
+        animation: glowPulseBlue 2s infinite;
+      }
+
+      .btn-demonslayer {
+        background: linear-gradient(135deg, #8b0000, #ff0000);
+        animation: glowPulseRed 2s infinite;
+      }
+
+      .btn-naruto {
+        background: linear-gradient(135deg, #ff6600, #ffb347);
+        animation: glowPulseOrange 2s infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="animeForm">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter Name" required />
+      </div>
+
+      <div>
+        <label for="contact">Contact No.</label>
+        <input type="tel" placeholder="Enter Number" required />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter Email" required />
+      </div>
+
+      <div>
+        <label for="dob">DOB</label>
+        <input id="date" type="date" required />
+      </div>
+
+      <div>
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <p>Choose Your Favorite Anime</p>
+
+        <input id="one-piece" type="radio" name="anime" value="one piece" />
+        <label for="one-piece">One Piece</label>
+
+        <input
+          id="demon-slayer"
+          type="radio"
+          name="anime"
+          value="demon slayer"
+        />
+        <label for="demon-slayer">Demon Slayer</label>
+
+        <input id="naruto" type="radio" name="anime" value="naruto" />
+        <label for="naruto">Naruto</label>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px">
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+
+      <p><b>Thank You</b></p>
+    </form>
+
+    <audio
+      id="onePieceAudio"
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_214ebac168.mp3?filename=adventure-theme-11274.mp3"
+    ></audio>
+    <audio
+      id="demonSlayerAudio"
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3e3c986ab1.mp3?filename=epic-trailer-music-11163.mp3"
+    ></audio>
+    <audio
+      id="narutoAudio"
+      src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_02b9ab3fa0.mp3?filename=anime-style-epic-theme-123983.mp3"
+    ></audio>
+
+    <div class="music-controls" id="musicControl">
+      <span id="musicStatus">⏸️</span>
+      <input
+        type="range"
+        id="volumeSlider"
+        min="0"
+        max="1"
+        step="0.05"
+        value="0.4"
+        title="Volume"
+      />
+    </div>
+
+    <script>
+      const radios = document.querySelectorAll('input[name="anime"]');
+      const onePiece = document.getElementById("onePieceAudio");
+      const demonSlayer = document.getElementById("demonSlayerAudio");
+      const naruto = document.getElementById("narutoAudio");
+      const musicControl = document.getElementById("musicControl");
+      const musicStatus = document.getElementById("musicStatus");
+      const volumeSlider = document.getElementById("volumeSlider");
+      const submitBtn = document.querySelector(".submit-btn");
+
+      let currentAudio = null;
+
+      function stopAll() {
+        [onePiece, demonSlayer, naruto].forEach((a) => {
+          a.pause();
+          a.currentTime = 0;
+        });
+      }
+
+      function resetControlColors() {
+        musicControl.classList.remove(
+          "music-onepiece",
+          "music-demonslayer",
+          "music-naruto"
+        );
+        submitBtn.classList.remove(
+          "btn-onepiece",
+          "btn-demonslayer",
+          "btn-naruto"
+        );
+      }
+
+      radios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          document.body.classList.add("fade-bg");
+          stopAll();
+
+          setTimeout(() => {
+            resetControlColors();
+
+            switch (radio.value) {
+              case "one piece":
+                document.body.style.background =
+                  "linear-gradient(135deg, rgba(0,180,216,0.85), rgba(0,119,182,0.85)), url('https://i.imgur.com/1cK8A9G.png')";
+                currentAudio = onePiece;
+                musicControl.classList.add("music-onepiece");
+                submitBtn.classList.add("btn-onepiece");
+                break;
+
+              case "demon slayer":
+                document.body.style.background =
+                  "linear-gradient(135deg, rgba(61,0,0,0.85), rgba(160,0,0,0.85)), url('https://i.imgur.com/ByFbZtW.png')";
+                currentAudio = demonSlayer;
+                musicControl.classList.add("music-demonslayer");
+                submitBtn.classList.add("btn-demonslayer");
+                break;
+
+              case "naruto":
+                document.body.style.background =
+                  "linear-gradient(135deg, rgba(255,123,0,0.85), rgba(255,179,71,0.85)), url('https://i.imgur.com/2gXv6La.png')";
+                currentAudio = naruto;
+                musicControl.classList.add("music-naruto");
+                submitBtn.classList.add("btn-naruto");
+                break;
+            }
+
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundPosition = "center";
+
+            if (currentAudio) {
+              currentAudio.volume = volumeSlider.value;
+              currentAudio.play();
+              musicStatus.textContent = "🔊";
+            }
+
+            setTimeout(() => {
+              document.body.classList.remove("fade-bg");
+            }, 1000);
+          }, 100);
+        });
+      });
+
+      musicControl.addEventListener("click", (e) => {
+        if (e.target === volumeSlider) return;
+        if (currentAudio) {
+          if (currentAudio.paused) {
+            currentAudio.play();
+            musicStatus.textContent = "🔊";
+          } else {
+            currentAudio.pause();
+            musicStatus.textContent = "⏸️";
+          }
+        }
+      });
+
+      volumeSlider.addEventListener("input", (e) => {
+        if (currentAudio) currentAudio.volume = e.target.value;
+      });
+
+      document.getElementById("animeForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("🎉 Form Submitted Successfully! You are now a true anime hero!");
+      });
+    </script>
+  </body>
+</html>

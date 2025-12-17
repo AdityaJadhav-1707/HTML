@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Form</title>
+    <style>
+  /* General Body Style */
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffe259, #ffa751);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  /* Form Container Style */
+  div {
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  input, select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 2px solid #ffb703;
+    width: 200px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input:focus, select:focus {
+    border-color: #fb8500;
+    box-shadow: 0 0 8px #fb8500;
+  }
+
+  /* Themed Radio Buttons for Anime */
+  /* One Piece Theme */
+  input[value="one piece"]:checked + label {
+    color: #0077be;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00bfff;
+  }
+
+  /* Demon Slayer Theme */
+  input[value="demon slayer"]:checked + label {
+    color: #b22222;
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff4d4d;
+  }
+
+  /* Naruto Theme */
+  input[value="naruto"]:checked + label {
+    color: #ff6600;
+    font-weight: bold;
+    text-shadow: 0 0 5px #ffb347;
+  }
+
+  /* Header Text */
+  p {
+    text-align: center;
+    font-size: 1.1em;
+  }
+
+  p b {
+    color: #222;
+    font-size: 1.3em;
+  }
+</style>
+
+  </head>
+  <body>
+
+    <div>
+      <label for="name">Name</form>
+      <input type="text" placeholder="Enter Name" required>
+    </div>
+
+    <div>
+        <label for="contact no.">Contact No.</label>
+        <input type="tel" placeholder="Enter Number" required>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter Email" required>
+    </div>
+
+    <div>
+        <label for="dob">DOB</label>
+        <input id="date" placeholder="Enter DOB" required>
+    </div>
+<!-- Dropdown for Gender -->
+    <div>
+        <label for="gender">Gender</label>
+        <select id="gender"required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <!-- Radio Button -->
+     <div>
+        <p>Choose Your Favorite Anime</p>
+        <input id="one piece" type="radio" name="anime" value="one piece">
+        <label for="one piece">Opne Piece</label>
+
+        <input id="demon slayer" type="radio" name="anime" value="demon slayer">
+        <label for="demon slayer">Demon Slayer</label>
+
+        <input id="naruto" type="radio" name="anime" value="naruto">
+        <label for="naruto">Naruto</label>
+     </div>
+     <p><b>Thank You</b></p>
+
+  </body>
+</html>
